@@ -1,7 +1,18 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
+
+app.use(cors())
 
 app.use(express.json())
+
+app.use((request, response, next) => {
+  console.log(request.method)
+  console.log(request.path)
+  console.log(request.body)
+  console.log('--------------')
+  next()
+})
 
 let notes = [
   {
